@@ -8,7 +8,7 @@ document.getElementById('sorteio-form').addEventListener('submit', function(even
     // Valida os valores
     const validationMessage = validateValues(min, max);
     if (validationMessage) {
-        displayResult(validationMessage);
+        displayError(validationMessage);
         return;
     }
 
@@ -19,10 +19,10 @@ document.getElementById('sorteio-form').addEventListener('submit', function(even
 
 function validateValues(min, max) {
     if (isNaN(min) || isNaN(max)) {
-        return 'Por favor, insira números válidos.';
+        return { min: 'Por favor, insira números válidos.', max: 'Por favor, insira números válidos.' };
     }
     if (min >= max) {
-        return 'O número mínimo deve ser menor que o máximo.';
+        return { min: 'O número mínimo deve ser menor que o máximo.', max: '' };
     }
     return null;
 }
@@ -31,6 +31,13 @@ function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function displayError(errors) {
+    document.getElementById('min-error').textContent = errors.min;
+    document.getElementById('max-error').textContent = errors.max;
+}
+
 function displayResult(message) {
     document.getElementById('resultado').textContent = message;
+    document.getElementById('min-error').textContent = '';
+    document.getElementById('max-error').textContent = '';
 }

@@ -5,19 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sorteador</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <img src="./img/Sem título.png" alt="Logo" class="logo">
-        <form id="sorteio-form">
+        <form id="sorteio-form" aria-labelledby="sorteio-label">
             <div class="input-group">
                 <div class="input-field">
-                    <label for="min">Mínimo</label>
-                    <input type="number" id="min" placeholder="Ex: 1">
+                    <label for="min">Mínimo:</label>
+                    <input type="number" id="min" placeholder="Ex: 1" aria-describedby="min-error">
+                    <span id="min-error" class="error-message"></span>
                 </div>
                 <div class="input-field">
-                    <label for="max">Máximo</label>
-                    <input type="number" id="max" placeholder="Ex: 100">
+                    <label for="max">Máximo:</label>
+                    <input type="number" id="max" placeholder="Ex: 100" aria-describedby="max-error">
+                    <span id="max-error" class="error-message"></span>
                 </div>
             </div>
             <button type="submit" class="btn-sortear">Sortear</button>
